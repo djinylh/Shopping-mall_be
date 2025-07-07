@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: gallery
+
+  datasource:
+    url: jdbc:mariadb://localhost/gallery
+    username: root
+    password : green502
