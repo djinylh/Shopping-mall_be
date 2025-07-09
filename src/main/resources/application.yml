@@ -1,3 +1,7 @@
+constants:
+  file:
+    directory: D:\student\heeJin\back\upLoad
+
 spring:
   application:
     name: gallery
