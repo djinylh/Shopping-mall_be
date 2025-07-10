@@ -4,13 +4,13 @@ import kr.co.wikibook.gallery.cart.model.CartDeleteReq;
 import kr.co.wikibook.gallery.cart.model.CartGetRes;
 import kr.co.wikibook.gallery.cart.model.CartPostReq;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 @Mapper
 public interface CartMapper {
     int save(CartPostReq req);
-    int deleteByMemberIdAndItemId(CartDeleteReq req);
     List<CartGetRes> findAllWithItemByMemberId(int memberId);
+    int deleteByCartIdAndMemberId(CartDeleteReq req);
+    int deleteByMemberId(int memberId);
 }

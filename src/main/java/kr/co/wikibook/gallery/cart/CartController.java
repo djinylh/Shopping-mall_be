@@ -21,30 +21,33 @@ public class CartController {
     private final CartService cartService;
 
     @PostMapping
-    public ResponseEntity<?> save(HttpServletRequest httpReq,@RequestBody CartPostReq req){
-        log.info("req: {}",req);
-        int logginedId = (int)HttpUtils.getSessionValue(httpReq, AccountConstants.MEMBER_ID_NAME);
-        req.setMemberId(logginedId);
+    public ResponseEntity<?> save(HttpServletRequest httpReq, @RequestBody CartPostReq req) {
+        log.info("req: {}", req);
+        int logginedMemberId = (int)HttpUtils.getSessionValue(httpReq, AccountConstants.MEMBER_ID_NAME);
+        req.setMemberId(logginedMemberId);
         int result = cartService.save(req);
-
         return ResponseEntity.ok(result);
     }
-    @GetMapping
-    public ResponseEntity<?> findAll(HttpServletRequest httpReq){
 
+    @GetMapping
+    public ResponseEntity<?> getCart(HttpServletRequest httpReq) {
         int logginedMemberId = (int)HttpUtils.getSessionValue(httpReq, AccountConstants.MEMBER_ID_NAME);
         List<CartGetRes> result = cartService.findAll(logginedMemberId);
         return ResponseEntity.ok(result);
     }
-    @DeleteMapping
-    public ResponseEntity<?> remove (HttpServletRequest httpReq, @ModelAttribute CartDeleteReq req) {
-        int loggedMemberId = (int) HttpUtils.getSessionValue(httpReq, AccountConstants.MEMBER_ID_NAME);
-        req.setMemberId(loggedMemberId);
+
+    @DeleteMapping("/{cartId}")
+    public ResponseEntity<?> deleteMemberItem(HttpServletRequest httpReq, @PathVariable int cartId) {
+        int logginedMemberId = (int)HttpUtils.getSessionValue(httpReq, AccountConstants.MEMBER_ID_NAME);
+        CartDeleteReq req = new CartDeleteReq(cartId, logginedMemberId);
         int result = cartService.remove(req);
         return ResponseEntity.ok(result);
-
     }
 
-
-
+    @DeleteMapping
+    public ResponseEntity<?> deleteMemberCart(HttpServletRequest httpReq) {
+        int logginedMemberId = (int)HttpUtils.getSessionValue(httpReq, AccountConstants.MEMBER_ID_NAME);
+        int result = cartService.removeAll(logginedMemberId);
+        return ResponseEntity.ok(result);
+    }
 }
