@@ -23,4 +23,7 @@ public class ItemController {
       List<ItemGetRes> items = itemService.findAll(ids);
       return ResponseEntity.ok(items);
    }
+
+
+
 }

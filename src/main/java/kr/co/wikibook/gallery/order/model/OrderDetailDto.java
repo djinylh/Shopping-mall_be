@@ -1,17 +1,14 @@
-package kr.co.wikibook.gallery.item.model;
+package kr.co.wikibook.gallery.order.model;
 
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
-import lombok.ToString;
+import lombok.Setter;
 
 @Getter
-@ToString
-public class ItemGetRes {
+@Setter
+public class OrderDetailDto {
     private int id;
     private String name;
     private String imgPath;
     private int price;
     private int discountPer;
-
 }
