@@ -16,6 +16,6 @@ public class OrderDetailGetRes {
     private String payment;
     private long amount;
     private String created;
-    private List<OrderDetailDto> updated;
+    private List<OrderDetailDto> items;
 
 }

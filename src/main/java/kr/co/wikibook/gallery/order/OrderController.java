@@ -42,6 +42,7 @@ public class OrderController {
         OrderDetailGetReq req = new OrderDetailGetReq();
         req.setOrderId(orderId);
         req.setMemberId(logginedMemberId);
+
         OrderDetailGetRes result = orderService.detail(req);
         return ResponseEntity.ok(result);
 

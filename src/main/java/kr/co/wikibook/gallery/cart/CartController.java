@@ -36,6 +36,7 @@ public class CartController {
         return ResponseEntity.ok(result);
     }
 
+
     @DeleteMapping("/{cartId}")
     public ResponseEntity<?> deleteMemberItem(HttpServletRequest httpReq, @PathVariable int cartId) {
         int logginedMemberId = (int)HttpUtils.getSessionValue(httpReq, AccountConstants.MEMBER_ID_NAME);
@@ -50,4 +51,5 @@ public class CartController {
         int result = cartService.removeAll(logginedMemberId);
         return ResponseEntity.ok(result);
     }
+
 }
