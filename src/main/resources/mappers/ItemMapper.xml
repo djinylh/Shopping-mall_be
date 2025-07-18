@@ -3,13 +3,20 @@
 <mapper namespace = "kr.co.wikibook.gallery.item.ItemMapper">
 
 
+    <insert id="save" useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO items
+        SET name = #{name}
+        ,   img_path = #{imgPath}
+        ,   price = #{price}
+        ,   discount_per = #{discountPer}
+    </insert>
+
     <select id="findAllByIdin">
     SELECT id, name, img_path, price, discount_per
         FROM items
         <if test="ids !=null and ids.size >0">
             WHERE id IN (<foreach collection="ids" item="item" separator=",">#{item}</foreach>)
         </if>
-
     </select>
 
 

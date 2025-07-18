@@ -47,7 +47,6 @@ public class OrderService {
 
         orderMapper.save(Orderpost);
         log.info("after-Orderpost={}", Orderpost);
-        //
         //OrderItemPostDto 객체화
         OrderItemPostDto orderItempost =  new OrderItemPostDto(Orderpost.getOrderId(), req.getItemIds());
 

@@ -45,8 +45,6 @@ public class OrderController {
 
         OrderDetailGetRes result = orderService.detail(req);
         return ResponseEntity.ok(result);
-
-
     }
 
 

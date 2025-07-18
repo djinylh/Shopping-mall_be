@@ -5,7 +5,9 @@ constants:
 spring:
   application:
     name: gallery
-
+  servlet:
+    multipart:
+      max-file-size: 15MB
   datasource:
     url: jdbc:mariadb://localhost/gallery
     username: root
